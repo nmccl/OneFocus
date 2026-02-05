@@ -159,4 +159,4 @@ Proprietary - All rights reserved
 
 ---
 
-Built with ❤️ for macOS
+Built by Noah McClung for macOS
