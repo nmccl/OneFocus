@@ -6,20 +6,77 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		FE486EF62EFF938C00241E5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE486EDB2EFF938C00241E5E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE486EE22EFF938C00241E5E;
+			remoteInfo = OneFocus;
+		};
+		FE486F002EFF938C00241E5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE486EDB2EFF938C00241E5E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE486EE22EFF938C00241E5E;
+			remoteInfo = OneFocus;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		FE0F19222F0452320049C0AE /* OneFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE486EE32EFF938C00241E5E /* OneFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE486EF52EFF938C00241E5E /* OneFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE486EFF2EFF938C00241E5E /* OneFocusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneFocusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FE18B8692F070B9100DE4706 /* Exceptions for "OneFocus" folder in "OneFocus" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Manager/FocusTimerManage+Notifications.swift",
+				Views/View/MenuBar/MenuBarTimerView.swift,
+			);
+			target = FE486EE22EFF938C00241E5E /* OneFocus */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		FE0F19242F0452320049C0AE /* OneFocus */ = {
+		FE486EE52EFF938C00241E5E /* OneFocus */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FE18B8692F070B9100DE4706 /* Exceptions for "OneFocus" folder in "OneFocus" target */,
+			);
 			path = OneFocus;
+			sourceTree = "<group>";
+		};
+		FE486EF82EFF938C00241E5E /* OneFocusTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OneFocusTests;
+			sourceTree = "<group>";
+		};
+		FE486F022EFF938C00241E5E /* OneFocusUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = OneFocusUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FE0F191F2F0452320049C0AE /* Frameworks */ = {
+		FE486EE02EFF938C00241E5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE486EF22EFF938C00241E5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE486EFC2EFF938C00241E5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +86,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FE0F19192F0452310049C0AE = {
+		FE486EDA2EFF938C00241E5E = {
 			isa = PBXGroup;
 			children = (
-				FE0F19242F0452320049C0AE /* OneFocus */,
-				FE0F19232F0452320049C0AE /* Products */,
+				FE486EE52EFF938C00241E5E /* OneFocus */,
+				FE486EF82EFF938C00241E5E /* OneFocusTests */,
+				FE486F022EFF938C00241E5E /* OneFocusUITests */,
+				FE486EE42EFF938C00241E5E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FE0F19232F0452320049C0AE /* Products */ = {
+		FE486EE42EFF938C00241E5E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FE0F19222F0452320049C0AE /* OneFocus.app */,
+				FE486EE32EFF938C00241E5E /* OneFocus.app */,
+				FE486EF52EFF938C00241E5E /* OneFocusTests.xctest */,
+				FE486EFF2EFF938C00241E5E /* OneFocusUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +109,134 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FE0F19212F0452320049C0AE /* OneFocus */ = {
+		FE486EE22EFF938C00241E5E /* OneFocus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FE0F19322F0452330049C0AE /* Build configuration list for PBXNativeTarget "OneFocus" */;
+			buildConfigurationList = FE486F092EFF938C00241E5E /* Build configuration list for PBXNativeTarget "OneFocus" */;
 			buildPhases = (
-				FE0F191E2F0452320049C0AE /* Sources */,
-				FE0F191F2F0452320049C0AE /* Frameworks */,
-				FE0F19202F0452320049C0AE /* Resources */,
+				FE486EDF2EFF938C00241E5E /* Sources */,
+				FE486EE02EFF938C00241E5E /* Frameworks */,
+				FE486EE12EFF938C00241E5E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				FE0F19242F0452320049C0AE /* OneFocus */,
+				FE486EE52EFF938C00241E5E /* OneFocus */,
 			);
 			name = OneFocus;
 			packageProductDependencies = (
 			);
 			productName = OneFocus;
-			productReference = FE0F19222F0452320049C0AE /* OneFocus.app */;
+			productReference = FE486EE32EFF938C00241E5E /* OneFocus.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FE486EF42EFF938C00241E5E /* OneFocusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE486F0C2EFF938C00241E5E /* Build configuration list for PBXNativeTarget "OneFocusTests" */;
+			buildPhases = (
+				FE486EF12EFF938C00241E5E /* Sources */,
+				FE486EF22EFF938C00241E5E /* Frameworks */,
+				FE486EF32EFF938C00241E5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE486EF72EFF938C00241E5E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FE486EF82EFF938C00241E5E /* OneFocusTests */,
+			);
+			name = OneFocusTests;
+			packageProductDependencies = (
+			);
+			productName = OneFocusTests;
+			productReference = FE486EF52EFF938C00241E5E /* OneFocusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FE486EFE2EFF938C00241E5E /* OneFocusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE486F0F2EFF938C00241E5E /* Build configuration list for PBXNativeTarget "OneFocusUITests" */;
+			buildPhases = (
+				FE486EFB2EFF938C00241E5E /* Sources */,
+				FE486EFC2EFF938C00241E5E /* Frameworks */,
+				FE486EFD2EFF938C00241E5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE486F012EFF938C00241E5E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FE486F022EFF938C00241E5E /* OneFocusUITests */,
+			);
+			name = OneFocusUITests;
+			packageProductDependencies = (
+			);
+			productName = OneFocusUITests;
+			productReference = FE486EFF2EFF938C00241E5E /* OneFocusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FE0F191A2F0452310049C0AE /* Project object */ = {
+		FE486EDB2EFF938C00241E5E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					FE0F19212F0452320049C0AE = {
+					FE486EE22EFF938C00241E5E = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					FE486EF42EFF938C00241E5E = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = FE486EE22EFF938C00241E5E;
+					};
+					FE486EFE2EFF938C00241E5E = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = FE486EE22EFF938C00241E5E;
 					};
 				};
 			};
-			buildConfigurationList = FE0F191D2F0452310049C0AE /* Build configuration list for PBXProject "OneFocus" */;
+			buildConfigurationList = FE486EDE2EFF938C00241E5E /* Build configuration list for PBXProject "OneFocus" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = FE0F19192F0452310049C0AE;
+			mainGroup = FE486EDA2EFF938C00241E5E;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = FE0F19232F0452320049C0AE /* Products */;
+			productRefGroup = FE486EE42EFF938C00241E5E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FE0F19212F0452320049C0AE /* OneFocus */,
+				FE486EE22EFF938C00241E5E /* OneFocus */,
+				FE486EF42EFF938C00241E5E /* OneFocusTests */,
+				FE486EFE2EFF938C00241E5E /* OneFocusUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FE0F19202F0452320049C0AE /* Resources */ = {
+		FE486EE12EFF938C00241E5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE486EF32EFF938C00241E5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE486EFD2EFF938C00241E5E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +246,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		FE0F191E2F0452320049C0AE /* Sources */ = {
+		FE486EDF2EFF938C00241E5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE486EF12EFF938C00241E5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE486EFB2EFF938C00241E5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -124,8 +269,21 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		FE486EF72EFF938C00241E5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE486EE22EFF938C00241E5E /* OneFocus */;
+			targetProxy = FE486EF62EFF938C00241E5E /* PBXContainerItemProxy */;
+		};
+		FE486F012EFF938C00241E5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE486EE22EFF938C00241E5E /* OneFocus */;
+			targetProxy = FE486F002EFF938C00241E5E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		FE0F19302F0452330049C0AE /* Debug */ = {
+		FE486F072EFF938C00241E5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -179,15 +337,17 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		FE0F19312F0452330049C0AE /* Release */ = {
+		FE486F082EFF938C00241E5E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -235,18 +395,21 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
 		};
-		FE0F19332F0452330049C0AE /* Debug */ = {
+		FE486F0A2EFF938C00241E5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 98DXFF854H;
 				ENABLE_APP_SANDBOX = YES;
@@ -254,43 +417,36 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				INFOPLIST_KEY_CFBundleDisplayName = OneFocus;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahmcclung.OneFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
-				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		FE0F19342F0452330049C0AE /* Release */ = {
+		FE486F0B2EFF938C00241E5E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 98DXFF854H;
 				ENABLE_APP_SANDBOX = YES;
@@ -298,59 +454,149 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				INFOPLIST_KEY_CFBundleDisplayName = OneFocus;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.noahmcclung.OneFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
-				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		FE486F0D2EFF938C00241E5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 98DXFF854H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noahmcclung.OneFocusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneFocus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OneFocus";
+			};
+			name = Debug;
+		};
+		FE486F0E2EFF938C00241E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 98DXFF854H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noahmcclung.OneFocusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneFocus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OneFocus";
+			};
+			name = Release;
+		};
+		FE486F102EFF938C00241E5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 98DXFF854H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noahmcclung.OneFocusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = OneFocus;
+			};
+			name = Debug;
+		};
+		FE486F112EFF938C00241E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 98DXFF854H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.noahmcclung.OneFocusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = OneFocus;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FE0F191D2F0452310049C0AE /* Build configuration list for PBXProject "OneFocus" */ = {
+		FE486EDE2EFF938C00241E5E /* Build configuration list for PBXProject "OneFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FE0F19302F0452330049C0AE /* Debug */,
-				FE0F19312F0452330049C0AE /* Release */,
+				FE486F072EFF938C00241E5E /* Debug */,
+				FE486F082EFF938C00241E5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE0F19322F0452330049C0AE /* Build configuration list for PBXNativeTarget "OneFocus" */ = {
+		FE486F092EFF938C00241E5E /* Build configuration list for PBXNativeTarget "OneFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FE0F19332F0452330049C0AE /* Debug */,
-				FE0F19342F0452330049C0AE /* Release */,
+				FE486F0A2EFF938C00241E5E /* Debug */,
+				FE486F0B2EFF938C00241E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE486F0C2EFF938C00241E5E /* Build configuration list for PBXNativeTarget "OneFocusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE486F0D2EFF938C00241E5E /* Debug */,
+				FE486F0E2EFF938C00241E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE486F0F2EFF938C00241E5E /* Build configuration list for PBXNativeTarget "OneFocusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE486F102EFF938C00241E5E /* Debug */,
+				FE486F112EFF938C00241E5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = FE0F191A2F0452310049C0AE /* Project object */;
+	rootObject = FE486EDB2EFF938C00241E5E /* Project object */;
 }
