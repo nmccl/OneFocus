@@ -2,7 +2,7 @@
 //  TasksView.swift
 //  OneFocus
 //
-//  Task management screen with list and creation
+//  Task management screen with list and creation - WITH PERSISTENCE FIX
 //
 
 import SwiftUI
@@ -39,6 +39,7 @@ struct TasksView: View {
             filtered = viewModel.tasks.completed
         }
         
+        
         // Apply search
         if !searchText.isEmpty {
             filtered = filtered.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
@@ -71,7 +72,8 @@ struct TasksView: View {
         }
         .background(AppConstants.Colors.backgroundPrimary)
         .sheet(isPresented: $showingNewTaskSheet) {
-            NewTaskDetailSheet(tasks: $viewModel.tasks)
+            // FIXED: Pass viewModel instead of binding
+            NewTaskDetailSheet(viewModel: viewModel)
         }
     }
     
@@ -122,13 +124,34 @@ struct TasksView: View {
                     withAnimation(.easeInOut(duration: AppConstants.Animation.fast)) {
                         selectedFilter = filter
                     }
-                    
+
                     if userSettings.hapticEnabled {
                         HapticManager.impact(.light)
                     }
                 }
             }
             Spacer()
+            if selectedFilter == .completed {
+                Button {
+                    clearCompletedTasks()
+                    if userSettings.hapticEnabled {
+                        HapticManager.impact(.light)
+                    }
+                } label: {
+                    Text("Clear Completed")
+                        .font(.system(size: AppConstants.FontSize.subheadline, weight: .regular))
+                        .foregroundColor(AppConstants.Colors.textPrimary)
+                        .padding(.horizontal, AppConstants.Spacing.md)
+                        .padding(.vertical, AppConstants.Spacing.sm)
+                        .background(AppConstants.Colors.backgroundSecondary)
+                        .cornerRadius(AppConstants.CornerRadius.pill)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: AppConstants.CornerRadius.pill)
+                                .stroke(AppConstants.Colors.cardBorder, lineWidth: AppConstants.Card.borderWidth)
+                        )
+                }
+                .buttonStyle(.plain)
+            }
         }
         .padding(.horizontal, AppConstants.Spacing.lg)
         .padding(.vertical, AppConstants.Spacing.md)
@@ -142,6 +165,7 @@ struct TasksView: View {
                 ForEach(filteredTasks) { task in
                     TaskCardView(
                         task: binding(for: task),
+                        viewModel: viewModel,  // FIXED: Pass viewModel
                         onDelete: {
                             viewModel.deleteTask(task)
                         }
@@ -233,6 +257,14 @@ struct TasksView: View {
         }
         return $viewModel.tasks[index]
     }
+    
+    private func clearCompletedTasks() {
+        // Collect completed tasks first to avoid mutating while iterating
+        let completed = viewModel.tasks.filter { $0.isCompleted }
+        completed.forEach { task in
+            viewModel.deleteTask(task)
+        }
+    }
 }
 
 // MARK: - Filter Chip
@@ -262,6 +294,7 @@ struct FilterChip: View {
 // MARK: - Task Card View
 struct TaskCardView: View {
     @Binding var task: Task
+    @ObservedObject var viewModel: TasksViewModel  // FIXED: Add viewModel
     @EnvironmentObject var userSettings: UserSettings
     @State private var showingDetailSheet = false
     let onDelete: () -> Void
@@ -271,7 +304,8 @@ struct TaskCardView: View {
             // Completion checkbox
             Button(action: {
                 withAnimation(.easeInOut(duration: AppConstants.Animation.fast)) {
-                    task.toggleCompletion()
+                    // FIXED: Use viewModel method instead of direct mutation
+                    viewModel.toggleTaskCompletion(task)
                 }
                 
                 if userSettings.hapticEnabled {
@@ -327,7 +361,7 @@ struct TaskCardView: View {
                 .stroke(AppConstants.Colors.cardBorder, lineWidth: AppConstants.Card.borderWidth)
         )
         .sheet(isPresented: $showingDetailSheet) {
-            TaskDetailSheet(task: $task, onDelete: onDelete)
+            TaskDetailSheet(task: $task, viewModel: viewModel, onDelete: onDelete)  // FIXED: Pass viewModel
         }
     }
 }
@@ -335,7 +369,7 @@ struct TaskCardView: View {
 // MARK: - New Task Detail Sheet
 struct NewTaskDetailSheet: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var tasks: [Task]
+    @ObservedObject var viewModel: TasksViewModel  // FIXED: Use viewModel instead of binding
     @State private var taskTitle = ""
     @State private var selectedPriority: Task.Priority = .medium
     @State private var notes = ""
@@ -401,7 +435,8 @@ struct NewTaskDetailSheet: View {
                             priority: selectedPriority,
                             notes: notes.isEmpty ? nil : notes
                         )
-                        tasks.append(newTask)
+                        // FIXED: Use viewModel.addTask() instead of direct append
+                        viewModel.addTask(newTask)
                         dismiss()
                     }) {
                         Text("Create Task")
@@ -426,10 +461,8 @@ struct NewTaskDetailSheet: View {
                 }
             }
         }
-        .frame(idealWidth: 500, idealHeight: 450)  // Preferred size
-        .frame(minWidth: 400, maxWidth: 700, minHeight: 300, maxHeight: 800)  // Flexible range
-
-        
+        .frame(idealWidth: 500, idealHeight: 650)
+        .frame(minWidth: 400, maxWidth: 600, minHeight: 500, maxHeight: 800)
     }
 }
 
@@ -438,11 +471,13 @@ struct NewTaskDetailSheet: View {
 struct TaskDetailSheet: View {
     @Environment(\.dismiss) var dismiss
     @Binding var task: Task
+    @ObservedObject var viewModel: TasksViewModel  // FIXED: Add viewModel
     let onDelete: () -> Void
     @State private var isEditing = false
     @State private var editedTitle: String = ""
     @State private var editedNotes: String = ""
     @State private var editedPriority: Task.Priority = .medium
+    @State private var editedDueDate: Date = Date()
     
     var body: some View {
         NavigationStack {
@@ -455,7 +490,7 @@ struct TaskDetailSheet: View {
                                 .font(.system(size: AppConstants.FontSize.subheadline, weight: .medium))
                                 .foregroundColor(AppConstants.Colors.textSecondary)
                             
-                            TextField("Enter task title", text: $editedTitle)
+                            TextField("Task title", text: $editedTitle)
                                 .textFieldStyle(.plain)
                                 .font(.system(size: AppConstants.FontSize.body))
                                 .padding(AppConstants.Spacing.md)
@@ -477,13 +512,23 @@ struct TaskDetailSheet: View {
                         }
                         
                         VStack(alignment: .leading, spacing: AppConstants.Spacing.sm) {
+                            Text("Due Date")
+                                .font(.system(size: AppConstants.FontSize.subheadline, weight: .medium))
+                                .foregroundColor(AppConstants.Colors.textSecondary)
+                            
+                            DatePicker("", selection: $editedDueDate, displayedComponents: [.date])
+                                .datePickerStyle(.graphical)
+                                .labelsHidden()
+                        }
+                        
+                        VStack(alignment: .leading, spacing: AppConstants.Spacing.sm) {
                             Text("Notes")
                                 .font(.system(size: AppConstants.FontSize.subheadline, weight: .medium))
                                 .foregroundColor(AppConstants.Colors.textSecondary)
                             
                             TextEditor(text: $editedNotes)
                                 .font(.system(size: AppConstants.FontSize.body))
-                                .frame(height: 150)
+                                .frame(height: 100)
                                 .padding(AppConstants.Spacing.sm)
                                 .background(AppConstants.Colors.backgroundSecondary)
                                 .cornerRadius(AppConstants.CornerRadius.medium)
@@ -491,18 +536,35 @@ struct TaskDetailSheet: View {
                     } else {
                         // View mode
                         VStack(alignment: .leading, spacing: AppConstants.Spacing.lg) {
+                            HStack {
+                                Image(systemName: task.priority.icon)
+                                    .foregroundColor(task.priority.color)
+                                Text(task.priority.rawValue)
+                                    .font(.system(size: AppConstants.FontSize.subheadline))
+                                    .foregroundColor(task.priority.color)
+                                Spacer()
+                            }
+                            
                             Text(task.title)
-                                .font(.system(size: AppConstants.FontSize.title, weight: .semibold))
+                                .font(.system(size: AppConstants.FontSize.title, weight: .medium))
                                 .foregroundColor(AppConstants.Colors.textPrimary)
                             
-                            HStack(spacing: AppConstants.Spacing.md) {
-                                Label(task.priority.rawValue, systemImage: "flag.fill")
-                                    .font(.system(size: AppConstants.FontSize.subheadline))
-                                    .foregroundColor(AppConstants.Colors.textSecondary)
+                            VStack(alignment: .leading, spacing: AppConstants.Spacing.sm) {
+                                HStack {
+                                    Text("Created:")
+                                        .foregroundColor(AppConstants.Colors.textSecondary)
+                                    Text(task.formattedCreatedDate)
+                                        .foregroundColor(AppConstants.Colors.textPrimary)
+                                }
+                                .font(.system(size: AppConstants.FontSize.body))
                                 
-                                Label(task.formattedCreatedDate, systemImage: "calendar")
-                                    .font(.system(size: AppConstants.FontSize.subheadline))
-                                    .foregroundColor(AppConstants.Colors.textSecondary)
+                                HStack {
+                                    Text("Due:")
+                                        .foregroundColor(AppConstants.Colors.textSecondary)
+                                    Text(task.formattedDueDate)
+                                        .foregroundColor(AppConstants.Colors.textPrimary)
+                                }
+                                .font(.system(size: AppConstants.FontSize.body))
                             }
                             
                             if let notes = task.notes, !notes.isEmpty {
@@ -517,32 +579,14 @@ struct TaskDetailSheet: View {
                                 }
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    
-                    Spacer()
-                    
-                    // Delete button
-                    Button(action: {
-                        onDelete()
-                        dismiss()
-                    }) {
-                        Text("Delete Task")
-                            .font(.system(size: AppConstants.FontSize.body, weight: .medium))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 14)
-                            .background(Color.red.opacity(0.8))
-                            .cornerRadius(AppConstants.CornerRadius.medium)
-                    }
-                    .buttonStyle(.plain)
                 }
                 .padding(AppConstants.Spacing.xl)
             }
             .navigationTitle(isEditing ? "Edit Task" : "Task Details")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(isEditing ? "Cancel" : "Close") {
+                    Button(isEditing ? "Cancel" : "Done") {
                         if isEditing {
                             isEditing = false
                         } else {
@@ -552,37 +596,46 @@ struct TaskDetailSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    Button(isEditing ? "Save" : "Edit") {
-                        if isEditing {
+                    if isEditing {
+                        Button("Save") {
                             task.title = editedTitle
-                            task.notes = editedNotes.isEmpty ? nil : editedNotes
                             task.priority = editedPriority
+                            task.dueDate = editedDueDate
+                            task.notes = editedNotes.isEmpty ? nil : editedNotes
+                            // FIXED: Save after editing
+                            viewModel.updateTask(task)
+                            
                             isEditing = false
-                        } else {
-                            editedTitle = task.title
-                            editedNotes = task.notes ?? ""
-                            editedPriority = task.priority
-                            isEditing = true
+                        }
+                        .disabled(editedTitle.isEmpty)
+                    } else {
+                        Menu {
+                            Button {
+                                editedTitle = task.title
+                                editedPriority = task.priority
+                                editedDueDate = task.dueDate ?? Date()
+                                editedNotes = task.notes ?? ""
+                                isEditing = true
+                            } label: {
+                                Label("Edit", systemImage: "pencil")
+                            }
+                            
+                            Button(role: .destructive) {
+                                onDelete()
+                                dismiss()
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
                         }
                     }
                 }
             }
         }
-        .frame(width: 500, height: 600)
-        .onAppear {
-            editedTitle = task.title
-            editedNotes = task.notes ?? ""
-            editedPriority = task.priority
-        }
-        
+        .frame(idealWidth: 500, idealHeight: 650)
+        .frame(minWidth: 400, maxWidth: 600, minHeight: 500, maxHeight: 800)
     }
 }
 
-// MARK: - Preview
-struct TasksView_Previews: PreviewProvider {
-    static var previews: some View {
-        TasksView()
-            .environmentObject(UserSettings.sample)
-            .frame(width: 800, height: 600)
-    }
-}
+
