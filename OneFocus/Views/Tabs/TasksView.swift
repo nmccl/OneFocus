@@ -183,7 +183,7 @@ struct TasksView: View {
                         .padding(.horizontal, AppConstants.Spacing.xl)
                         .padding(.vertical, 14)
                         .background(AppConstants.Colors.primaryAccent)
-                        .cornerRadius(AppConstants.CornerRadius.pill)
+                        .cornerRadius(AppConstants.CornerRadius.medium)
                 }
                 .buttonStyle(.plain)
             }
@@ -426,7 +426,10 @@ struct NewTaskDetailSheet: View {
                 }
             }
         }
-        .frame(width: 500, height: 700)
+        .frame(idealWidth: 500, idealHeight: 450)  // Preferred size
+        .frame(minWidth: 400, maxWidth: 700, minHeight: 300, maxHeight: 800)  // Flexible range
+
+        
     }
 }
 

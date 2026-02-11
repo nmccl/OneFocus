@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import Combine
+import Foundation
 
 struct HistoryView: View {
     
     // MARK: - Environment
     @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject var historyManager: HistoryManager
     
     // MARK: - State
-    @State private var historyItems: [HistoryItem] = HistoryItem.sampleList
+    //@State private var historyItems: HistoryManager
     @State private var selectedFilter: HistoryFilter = .all
     
     // MARK: - Filter Enum
@@ -29,16 +32,16 @@ struct HistoryView: View {
         
         switch selectedFilter {
         case .all:
-            filtered = historyItems
+            filtered = historyManager.historyItems  // Use historyManager instance
         case .tasks:
-            filtered = historyItems.tasks
+            filtered = historyManager.historyItems.filter { $0.type == .task }  // Fixed
         case .sessions:
-            filtered = historyItems.filter { $0.type == .focusSession || $0.type == .breakSession }
+            filtered = historyManager.historyItems.filter { $0.type == .focusSession || $0.type == .breakSession }
         }
         
         return filtered.sortedByDate
     }
-    
+
     private var groupedItems: [Date: [HistoryItem]] {
         filteredItems.groupedByDate
     }

@@ -43,7 +43,7 @@ struct SettingsView: View {
         .background(AppConstants.Colors.backgroundPrimary)
         .onAppear {
             guard !didLoadDraft else { return }
-            draft = SettingsWorkingCopy(from: userSettings) // ✅ requires init(from:)
+            draft = SettingsWorkingCopy(from: userSettings)
             didLoadDraft = true
         }
     }
@@ -100,7 +100,7 @@ struct SettingsView: View {
 
     private var timerSection: some View {
         CardContainer(title: "Pomodoro Timer") {
-            StepperRow(title: "Focus", value: $draft.focusMinutes, range: 5...180, suffix: "min")
+            StepperRow(title: "Focus", value: $draft.focusMinutes, range: 1...180, suffix: "min")
             StepperRow(title: "Break", value: $draft.breakMinutes, range: 1...60, suffix: "min")
             StepperRow(title: "Long Break", value: $draft.longBreakMinutes, range: 5...90, suffix: "min")
             StepperRow(title: "Sessions before Long Break", value: $draft.sessionsBeforeLongBreak, range: 2...12, suffix: "")

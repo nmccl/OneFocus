@@ -9,6 +9,7 @@ struct FocusView: View {
 
     @EnvironmentObject private var focusTimer: FocusTimerManager
     @EnvironmentObject private var userSettings: UserSettings
+    @EnvironmentObject private var historyManager: HistoryManager
 
     var body: some View {
         GeometryReader { geometry in
@@ -95,8 +96,12 @@ struct FocusView: View {
                                     Circle().stroke(AppConstants.Colors.textPrimary, lineWidth: 1.5)
                                 )
                         }
+                    } .onChange(of: focusTimer.completedSessions) { newValue in
+                        if newValue < 0 {
+                            historyManager.addCompletedSession(FocusSession.sampleCompleted)
+                        }
                     }
-
+                    
                     Spacer()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

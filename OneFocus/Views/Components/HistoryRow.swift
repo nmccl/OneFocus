@@ -140,22 +140,22 @@ struct CompactHistoryRow: View {
 }
 
 // MARK: - Preview
-struct HistoryRow_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack(spacing: AppConstants.Spacing.md) {
-            HistoryRow(item: HistoryItem.sample)
+//struct HistoryRow_Previews: PreviewProvider {
+  //  static var previews: some View {
+    //    VStack(spacing: AppConstants.Spacing.md) {
+      //      HistoryRow(item: HistoryItem.sample)
             
-            HistoryRow(item: HistoryItem(
-                type: .focusSession,
-                date: Date(),
-                referenceID: UUID(),
-                title: "Focus Session",
-                duration: 1500
-            ))
+        //    HistoryRow(item: HistoryItem(
+          //      type: .focusSession,
+            //    date: Date(),
+              //  referenceID: UUID(),
+                //title: "Focus Session",
+                //duration: 1500
+            //))
             
-            CompactHistoryRow(item: HistoryItem.sample)
-        }
-        .padding()
-        .background(AppConstants.Colors.backgroundPrimary)
-    }
-}
+           // CompactHistoryRow(item: HistoryItem.sample)
+       // }
+        //.padding()
+        //.background(AppConstants.Colors.backgroundPrimary)
+    //}
+//}

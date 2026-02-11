@@ -143,54 +143,6 @@ struct HistoryItem: Identifiable, Codable, Equatable {
             return formattedDate
         }
     }
-    
-    // MARK: - Sample Data for Previews
-    static var sample: HistoryItem {
-        HistoryItem(
-            type: .task,
-            date: Date(),
-            referenceID: UUID(),
-            title: "Complete project documentation",
-            metadata: ["priority": "High"]
-        )
-    }
-    
-    static var sampleTask: HistoryItem {
-        HistoryItem(
-            type: .task,
-            date: Date(),
-            referenceID: UUID(),
-            title: "Complete project documentation",
-            metadata: ["priority": "High"]
-        )
-    }
-    
-    static var sampleFocusSession: HistoryItem {
-        HistoryItem(
-            type: .focusSession,
-            date: Date().addingTimeInterval(-3600),
-            referenceID: UUID(),
-            title: "Focus Session",
-            duration: 25 * 60
-        )
-    }
-    
-    static var sampleBreakSession: HistoryItem {
-        HistoryItem(
-            type: .breakSession,
-            date: Date().addingTimeInterval(-1800),
-            referenceID: UUID(),
-            title: "Short Break",
-            duration: 5 * 60
-        )
-    }
-    
-    static var sampleList: [HistoryItem] {
-        [
-           
-            
-        ]
-    }
 }
 
 // MARK: - HistoryItem Array Extensions

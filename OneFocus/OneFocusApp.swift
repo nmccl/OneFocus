@@ -16,6 +16,7 @@ struct OneFocusApp: App {
     @StateObject private var userSettings: UserSettings
     @StateObject private var authManager: AuthManager
     @StateObject private var focusTimer: FocusTimerManager
+    @StateObject private var historyManager = HistoryManager()
 
     #if os(iOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
@@ -51,6 +52,7 @@ struct OneFocusApp: App {
             .environmentObject(userSettings)
             .environmentObject(authManager)
             .environmentObject(focusTimer)
+            .environmentObject(historyManager)
             .preferredColorScheme(userSettings.appearanceMode.preferredColorScheme)
             .tint(AppConstants.Colors.primaryAccent)
             .onAppear {

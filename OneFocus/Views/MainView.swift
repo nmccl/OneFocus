@@ -4,12 +4,15 @@
 //
 
 import SwiftUI
+#if os(macOS)
 import AppKit
+#endif
 struct MainView: View {
 
     // MARK: - Environment
     @EnvironmentObject var userSettings: UserSettings
     @EnvironmentObject var authManager: AuthManager
+    @EnvironmentObject var historyManager: HistoryManager
 
     // MARK: - State
     @State private var selectedTab: NavigationTab = .home
@@ -53,11 +56,11 @@ struct MainView: View {
     // MARK: - Body
     var body: some View {
         Group {
-            #if os(iOS)
-            iOSRoot
-            #else
+          //  #if os(iOS)
+            //iOSRoot
+          //  #else
             macOSRoot
-            #endif
+          //  #endif
         }
         // This edits the size constraints - adjust width and height values to match your reference image size
         .frame(minWidth: 650, minHeight: 400) // Prevents window from being resized smaller than these dimensions
@@ -88,36 +91,36 @@ struct MainView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    // MARK: - iOS Root (Tab Bar)
-    private var iOSRoot: some View {
-        TabView(selection: $selectedTab) {
-            HomeView(selectedTab: $selectedTab)
-                .tag(NavigationTab.home)
-                .tabItem { Label(NavigationTab.home.rawValue, systemImage: selectedTab == .home ? NavigationTab.home.iconFilled : NavigationTab.home.icon) }
+// MARK: - iOS Root (Tab Bar)
+   // private var iOSRoot: some View {
+       // TabView(selection: $selectedTab) {
+          //  HomeView(selectedTab: $selectedTab)
+             //   .tag(NavigationTab.home)
+              //  .tabItem { SwiftUI.Label(NavigationTab.home.rawValue, systemImage: selectedTab == .home ? NavigationTab.home.iconFilled : NavigationTab.home.icon) }
 
-            FocusView()
-                .tag(NavigationTab.focus)
-                .tabItem { Label(NavigationTab.focus.rawValue, systemImage: selectedTab == .focus ? NavigationTab.focus.iconFilled : NavigationTab.focus.icon) }
+           // FocusView()
+            //    .tag(NavigationTab.focus)
+             //   .tabItem { SwiftUI.Label(NavigationTab.focus.rawValue, systemImage: selectedTab == .focus ? NavigationTab.focus.iconFilled : NavigationTab.focus.icon) }
 
-            TasksView()
-                .tag(NavigationTab.tasks)
-                .tabItem { Label(NavigationTab.tasks.rawValue, systemImage: selectedTab == .tasks ? NavigationTab.tasks.iconFilled : NavigationTab.tasks.icon) }
+           // TasksView()
+              //  .tag(NavigationTab.tasks)
+             //   .tabItem { SwiftUI.Label(NavigationTab.tasks.rawValue, systemImage: selectedTab == .tasks ? NavigationTab.tasks.iconFilled : NavigationTab.tasks.icon) }
 
-            QuickNotesView()
-                .tag(NavigationTab.notes)
-                .tabItem { Label(NavigationTab.notes.rawValue, systemImage: selectedTab == .notes ? NavigationTab.notes.iconFilled : NavigationTab.notes.icon) }
+          //  QuickNotesView()
+            //    .tag(NavigationTab.notes)
+              //  .tabItem { SwiftUI.Label(NavigationTab.notes.rawValue, systemImage: selectedTab == //.notes ? NavigationTab.notes.iconFilled : NavigationTab.notes.icon) }
 
-            ClipboardHistoryView()
-                .tag(NavigationTab.clipboard)
-                .tabItem { Label(NavigationTab.clipboard.rawValue, systemImage: selectedTab == .clipboard ? NavigationTab.clipboard.iconFilled : NavigationTab.clipboard.icon) }
+          //  ClipboardHistoryView()
+           //     .tag(NavigationTab.clipboard)
+           //     .tabItem { SwiftUI.Label(NavigationTab.clipboard.rawValue, systemImage: selectedTab == .clipboard ? NavigationTab.clipboard.iconFilled : NavigationTab.clipboard.icon) }
 
-            HistoryView()
-                .tag(NavigationTab.history)
-                .tabItem { Label(NavigationTab.history.rawValue, systemImage: selectedTab == .history ? NavigationTab.history.iconFilled : NavigationTab.history.icon) }
-        }
-        .tint(AppConstants.Colors.primaryAccent)
-        .background(AppConstants.Colors.backgroundPrimary.ignoresSafeArea())
-    }
+          //  HistoryView(historyItems: historyManager.items)
+                //     .tag(NavigationTab.history)
+             //   .tabItem { SwiftUI.Label(NavigationTab.history.rawValue, systemImage: selectedTab == .history ? NavigationTab.history.iconFilled : NavigationTab.history.icon) }
+  //      }
+   //     .tint(AppConstants.Colors.primaryAccent)
+  //      .background(AppConstants.Colors.backgroundPrimary.ignoresSafeArea())
+  //  }
 
     // MARK: - Sidebar Content (macOS)
     private var sidebarContent: some View {
@@ -278,3 +281,4 @@ struct SidebarNavigationButton: View {
         .buttonStyle(.plain)
     }
 }
+
