@@ -34,7 +34,7 @@ struct HistoryView: View {
         case .all:
             filtered = historyManager.historyItems  // Use historyManager instance
         case .tasks:
-            filtered = historyManager.historyItems.filter { $0.type == .task }  // Fixed
+            filtered = historyManager.historyItems.filter { $0.type == .task }  
         case .sessions:
             filtered = historyManager.historyItems.filter { $0.type == .focusSession || $0.type == .breakSession }
         }

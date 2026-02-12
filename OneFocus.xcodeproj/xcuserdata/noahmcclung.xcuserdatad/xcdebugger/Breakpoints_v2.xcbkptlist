@@ -3,4 +3,52 @@
    uuid = "4A068ED8-C1A1-441A-B152-4DB4485638CB"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EFF4D9CD-E15C-42F4-AF90-31E7A770DFCC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OneFocus/Views/Tabs/HistoryView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "filteredItems"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "EFF4D9CD-E15C-42F4-AF90-31E7A770DFCC - 35cf21a9a6bb6533"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OneFocus.HistoryView.filteredItems.getter : Swift.Array&lt;OneFocus.HistoryItem&gt;"
+                  moduleName = "OneFocus.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/noahmcclung/Development/Apple/Softwares/OneFocus/OneFocus/Views/Tabs/HistoryView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39">
+               </Location>
+               <Location
+                  uuid = "EFF4D9CD-E15C-42F4-AF90-31E7A770DFCC - 7ab8d733a4a9684e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (OneFocus.HistoryItem) -&gt; Swift.Bool in OneFocus.HistoryView.filteredItems.getter : Swift.Array&lt;OneFocus.HistoryItem&gt;"
+                  moduleName = "OneFocus.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/noahmcclung/Development/Apple/Softwares/OneFocus/OneFocus/Views/Tabs/HistoryView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

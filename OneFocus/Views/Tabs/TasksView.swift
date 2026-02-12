@@ -461,7 +461,7 @@ struct NewTaskDetailSheet: View {
                 }
             }
         }
-        .frame(idealWidth: 500, idealHeight: 650)
+        .frame(idealWidth: 400, idealHeight: 450)
         .frame(minWidth: 400, maxWidth: 600, minHeight: 500, maxHeight: 800)
     }
 }
